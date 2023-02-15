@@ -1,0 +1,80 @@
+﻿@model WebPage.Models.CarModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Car Price Guesser</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doors)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(model => model.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Doors)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Year)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-2 offset-5">
+            <form asp-action="Guess">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <input asp-for="Price" class="form-control" value="0" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Guess Price" class="btn btn-primary" />
+ 
+
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2 offset-5">
+            <a asp-action="Index" class="btn btn-info">Change Car</a>
+        </div>
+    </div>
+    <br />
+    @if (ViewBag.Correct)
+    {
+        <span class="text-success"><p>GREAT JOB!!</p></span>
+    }
+</div>
