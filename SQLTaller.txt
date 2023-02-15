@@ -1,0 +1,8 @@
+SELECT C.FirstName, C.LastName as Full Name,
+C.Age,O.OrderID, O.DateCreated,
+O.MethodofPurchase as Purchase Method, 
+OD.ProductNumber, OD.ProductOrigin
+FROM Customer as C
+INNER JOIN Orders as O on C.PersonID=O.PersonID
+INNER JOIN OrdersDetails as OD on O.OrderID = OD.OrderID
+WHERE OD.ProductID = 1112222333
